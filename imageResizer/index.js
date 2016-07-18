@@ -4,44 +4,41 @@ var Datauri = require('datauri');
 
 var path = require('path');
 module.exports = function (source, map) {
-
+  this.cacheable();
   var callback = this.async();
 
   // Setup the plugin instance with options...
   if (!this.emitFile) throw new Error("emitFile is required from module system");
 
+  var originalImage = path.resolve(this.resource)
+  this.addDependency(originalImage);
+
   var config = {
     publicPath: false,
     name: "[name]_original.[ext]"
   };
+
   var url = loaderUtils.interpolateName(this, config.name, {});
 
-  Jimp.read(path.resolve(this.resource)).then(function (image) {
+  Jimp.read(originalImage).then(function (image) {
     var size = {
-      width: image.bitmap.width / 8,
-      height: image.bitmap.height / 8
+      width: image.bitmap.width,
+      height: image.bitmap.height
     };
 
-    image.resize(42, Jimp.AUTO)            // resize
+    image.resize(42, Jimp.AUTO)    // resize
       .quality(60)                 // set JPEG quality
 
-    var buff = image.getBuffer(Jimp.MIME_JPEG, function (err, result) {
-
-      var uri = new Datauri().format('.jpg', result).content;
-
+    image.getBuffer(Jimp.MIME_JPEG, function (err, result) {
+      var dataUri = new Datauri().format('.jpg', result).content;
       this.emitFile(url, source);
-
-
       callback(null, "module.exports = " + JSON.stringify({
-        placeHolder: uri,
+        placeHolder: dataUri,
         fileName: url,
         size: size
       }) + ";", map);
-      
     }.bind(this));
-
   }.bind(this)).catch(function (err) {
-
     console.log(err);
   });
 }
