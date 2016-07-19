@@ -36,7 +36,7 @@ module.exports = function (source, map) {
       this.emitFile(url, source);
 
       callback(null, "module.exports = " + JSON.stringify({
-        placeHolder: dataUri,
+        dataUri: dataUri,
         fileName: url,
         size: size
       }) + ";", map);

@@ -17,9 +17,10 @@ Install webpack-image-placeholder
 
 ## Usage
 ``` javascript
-var placeHolder = require("webpack-image-placeholder!./image.jpeg");
+var placeholder = require("webpack-image-placeholder!./image.jpeg");
 var placeHolderImageElement = document.createElement('img');
-placeHolderImageElement.setAttribute('src', milkyWayImage.placeHolder);
+placeHolderImageElement.setAttribute('src', placeHolder.dataUri);
+document.body.appendChild(placeHolderImageElement);
 ```
 
 ## Demo
