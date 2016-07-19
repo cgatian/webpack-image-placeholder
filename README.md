@@ -9,4 +9,4 @@ This loader does **not** require ImageMagick. Instead this loader makes use of [
 
 https://code.facebook.com/posts/991252547593574/the-technology-behind-preview-photos
 
-![sample image](https://github.com/cgatian/webpack-image-placeholder/blob/master/test/fade.gif "Sample Image")
+![sample image](https://github.com/cgatian/webpack-image-placeholder/raw/master/test/fade.gif "Sample placeholder usage")
