@@ -8,12 +8,14 @@ This loader does **not** require ImageMagick. Instead this loader makes use of [
 ## Installation
 
 Install LWIP
+
 `npm install lwip --save-dev`
 
 Install webpack-image-placeholder
+
 `npm install webpack-image-placeholder --save-dev`
 
-
+## Usage
 ``` javascript
 var placeHolder = require("webpack-image-placeholder!./image.jpeg");
 var placeHolderImageElement = document.createElement('img');
