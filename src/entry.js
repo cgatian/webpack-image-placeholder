@@ -1,7 +1,5 @@
 var milkyWayImage = require('./pup.jpg');
 
-debugger;
-
 var placeHolderImage = document.createElement('img');
 placeHolderImage.src = milkyWayImage.placeHolder;
 setSize(placeHolderImage, milkyWayImage.size);
@@ -21,8 +19,8 @@ container.appendChild(placeHolderImage);
 document.body.appendChild(container);
 
 function setSize(element, size) {
-    element.style.width = size.width + 'px';
-    element.style.height = size.height + 'px';
+    element.style.width = size.width / 8 + 'px';
+    element.style.height = size.height / 8 + 'px';
 }
 
 function setupPlaceHolderImage(img) {
