@@ -21,17 +21,20 @@ module.exports = function (source, map) {
   var url = loaderUtils.interpolateName(this, config.name, {});
 
   Jimp.read(originalImage).then(function (image) {
+    var extension = loaderUtils.interpolateName(this, '.[ext]', {});
+
     var size = {
       width: image.bitmap.width,
       height: image.bitmap.height
     };
 
-    image.resize(42, Jimp.AUTO)    // resize
+    image.scaleToFit(42, 42)    // resize
       .quality(60)                 // set JPEG quality
 
     image.getBuffer(Jimp.MIME_JPEG, function (err, result) {
-      var dataUri = new Datauri().format('.jpg', result).content;
+      var dataUri = new Datauri().format(extension, result).content;
       this.emitFile(url, source);
+      
       callback(null, "module.exports = " + JSON.stringify({
         placeHolder: dataUri,
         fileName: url,

@@ -1,5 +1,7 @@
 var milkyWayImage = require('./pup.jpg');
 
+debugger;
+
 var placeHolderImage = document.createElement('img');
 placeHolderImage.src = milkyWayImage.placeHolder;
 setSize(placeHolderImage, milkyWayImage.size);

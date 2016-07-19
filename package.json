@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel app --out-dir dist --source-maps",
-    "start": "babel-node app.js"
+    "test": "webpack-dev-server --port 3000 --config webpack.config.js --progress"
   },
   "author": "",
   "license": "ISC",
