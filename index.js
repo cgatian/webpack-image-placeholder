@@ -29,12 +29,12 @@ module.exports = function (source, map) {
     };
 
     image.scaleToFit(42, 42)    // resize
-      .quality(60)                 // set JPEG quality
+      .quality(60)              // set JPEG quality
 
     image.getBuffer(Jimp.MIME_JPEG, function (err, result) {
       var dataUri = new Datauri().format(extension, result).content;
       this.emitFile(url, source);
-      
+
       callback(null, "module.exports = " + JSON.stringify({
         placeHolder: dataUri,
         fileName: url,
