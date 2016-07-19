@@ -2,7 +2,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path'); 
 
 var config = {
-   entry: "./src/entry.js",
+   entry: path.resolve(__dirname,  "./src/entry.js"),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -14,7 +14,7 @@ var config = {
   ],
     module: {
         loaders: [
-            { test: /\.jpg$/, loader: "../imageResizer" },
+            { test: /\.jpg$/, loader: path.resolve(__dirname, "../index.js") },
         ]
     }
 };

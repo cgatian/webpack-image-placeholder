@@ -2,12 +2,13 @@
   "name": "webpack-image-placeholder",
   "version": "0.1.0",
   "description": "",
+  "author" : "Chaz Gatian <charlesgatian@hotmail.com> (https://github.com/cgatian)",
+  "keywords": ["webpack", "image", "resize", "placeholder", "LWIP", "base64", "datauri"],
   "main": "index.js",
   "scripts": {
-    "test": "webpack-dev-server --port 3000 --config webpack.config.js --progress"
+    "test": "webpack-dev-server --port 3000 --config test/webpack.config.js --progress"
   },
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
