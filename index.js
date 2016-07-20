@@ -7,9 +7,6 @@ module.exports = function (source, map) {
   this.cacheable();
   var callback = this.async();
 
-  // Setup the plugin instance with options...
-  if (!this.emitFile) throw new Error("emitFile is required from module system");
-
   var originalImage = path.resolve(this.resource)
   this.addDependency(originalImage);
 
@@ -17,8 +14,6 @@ module.exports = function (source, map) {
     publicPath: false,
     name: "[name]_original.[ext]"
   };
-
-  var url = loaderUtils.interpolateName(this, config.name, {});
 
   Jimp.read(originalImage).then(function (image) {
     var extension = loaderUtils.interpolateName(this, '.[ext]', {});
@@ -33,11 +28,9 @@ module.exports = function (source, map) {
 
     image.getBuffer(Jimp.MIME_JPEG, function (err, result) {
       var dataUri = new Datauri().format(extension, result).content;
-      this.emitFile(url, source);
 
       callback(null, "module.exports = " + JSON.stringify({
         dataUri: dataUri,
-        fileName: url,
         size: size
       }) + ";", map);
     }.bind(this));
@@ -45,5 +38,3 @@ module.exports = function (source, map) {
     console.log(err);
   });
 }
-
-module.exports.raw = true; // get buffer stream instead of utf8 string
