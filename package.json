@@ -21,6 +21,10 @@
   "peerDependencies": {
     "jimp": "^0.2.24"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cgatian/webpack-image-placeholder.git"
+  },
   "devDependencies": {
     "datauri": "^1.0.4",
     "html-webpack-plugin": "^2.22.0",
